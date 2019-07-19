@@ -13,6 +13,6 @@ server.use(bodyParser.json());
 server.use(cors());
 
 server.use("/api/projects", projectsRouter);
-server.unsubscribe("/api/actions", actionsRouter);
+server.use("/api/actions", actionsRouter);
 
 module.exports = server;
