@@ -29,4 +29,20 @@ router.post("/", (req, res) => {
     });
 });
 
+router.put("/:id", (req, res) => {
+  const { id } = req.params;
+  const changes = req.body;
+
+  Actions.update(changes, id)
+    .then(action => {
+      res.status(200).json(action);
+    })
+    .catch(err => {
+      res.status(500).json({
+        message: "There was an error when trying to process this request."
+      });
+      console.log(err);
+    });
+});
+
 module.exports = router;

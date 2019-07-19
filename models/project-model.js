@@ -4,7 +4,8 @@ module.exports = {
   find,
   findById,
   add,
-  findActions
+  findActions,
+  remove
 };
 
 function find() {
@@ -37,4 +38,10 @@ function add(project) {
     .then(id => {
       return findById(...id);
     });
+}
+
+function remove(id) {
+  return db("projects")
+    .where({ id })
+    .del();
 }

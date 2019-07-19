@@ -3,7 +3,8 @@ const db = require("../data/data-config");
 module.exports = {
   find,
   findById,
-  add
+  add,
+  update
 };
 
 function find() {
@@ -21,6 +22,12 @@ function findById(id) {
         return null;
       }
     });
+}
+
+function update(changes, id) {
+  return db("actions")
+    .where({ id })
+    .update(changes);
 }
 
 function add(action) {
